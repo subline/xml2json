@@ -11,23 +11,23 @@ export function xmlToJson(xml) {
 
         if (attributes.length > 0) {
             jsonNode["@attributes"] = {};
-            for (let i = 0; i< attributes.length; i++) {
-                jsonNode["@attributes"][attributes[i].name] = attributes[i].value;
-            }
+            _.each(attributes, (attribute) => {
+                jsonNode["@attributes"][attribute.name] = attribute.value;
+            });
         }
 
         if (childNodes.length === 1 && childNodes[0].nodeType === 3) {
             jsonNode["@value"] = childNodes[0].nodeValue;
         } else {
-            for (let i = 0; i< childNodes.length; i++) {
-                if (childNodes[i].nodeType === 1) {
-                    const childNodeName = childNodes[i].nodeName;
+            _.each(childNodes, (childNode) => {
+                if (childNode.nodeType === 1) {
+                    const childNodeName = childNode.nodeName;
                     if (!jsonNode[childNodeName]) {
                         jsonNode[childNodeName] = [];
                     }
-                    jsonNode[childNodeName].push(nodeToJson(childNodes[i]));
+                    jsonNode[childNodeName].push(nodeToJson(childNode));
                 }
-            }
+            });
         }
 
         return jsonNode;

@@ -1,6 +1,6 @@
 {
   "name": "xml2json-browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "sml2json",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/subline/xml2json/issues"
   },
-  "homepage": "https://github.com/subline/xml2json#readme"
+  "homepage": "https://github.com/subline/xml2json#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
